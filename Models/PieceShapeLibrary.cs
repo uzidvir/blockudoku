@@ -59,9 +59,6 @@ public static class PieceShapeLibrary
         shapes.Add(Make("BigL-180",   "LightBlue", new[] { (0, 0), (0, 1), (0, 2), (1, 2), (2, 2) })); // ### / ..# / ..#
         shapes.Add(Make("BigL-270",   "LightBlue", new[] { (0, 2), (1, 2), (2, 0), (2, 1), (2, 2) })); // ..# / ..# / ###
 
-        // 2×3 rectangle
-        shapes.Add(Make("Rect-2x3",   "Gold",      new[] { (0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2) }));
-
         return shapes;
     }
 
