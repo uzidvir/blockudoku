@@ -68,20 +68,8 @@ public class BoardRenderer
     private static void DrawFilledCell(Graphics g, Rectangle rect, Color color)
     {
         var inner = InnerRect(rect);
-
-        // Main fill
         using var fill = new SolidBrush(color);
         g.FillRectangle(fill, inner);
-
-        // Top highlight glint
-        using var glint = new SolidBrush(Color.FromArgb(55, 255, 255, 255));
-        g.FillRectangle(glint, new Rectangle(inner.X, inner.Y, inner.Width, inner.Height / 3));
-
-        // Bottom shadow
-        using var shadow = new SolidBrush(ColorTheme.Darken(color));
-        g.FillRectangle(shadow, new Rectangle(
-            inner.X, inner.Y + inner.Height * 2 / 3,
-            inner.Width, inner.Height / 3));
     }
 
     private static void DrawEmptyCell(Graphics g, Rectangle rect)

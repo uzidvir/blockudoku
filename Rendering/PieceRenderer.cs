@@ -40,17 +40,6 @@ public class PieceRenderer
 
             using var fill = new SolidBrush(drawColor);
             g.FillRectangle(fill, rect);
-
-            // Top highlight
-            using var glint = new SolidBrush(Color.FromArgb((int)(a * 0.22f), 255, 255, 255));
-            g.FillRectangle(glint, new Rectangle(rect.X, rect.Y, rect.Width, rect.Height / 3));
-
-            // Bottom shadow
-            Color dark = ColorTheme.Darken(baseColor);
-            using var shadow = new SolidBrush(Color.FromArgb(a, dark));
-            g.FillRectangle(shadow, new Rectangle(
-                rect.X, rect.Y + rect.Height * 2 / 3,
-                rect.Width, rect.Height / 3));
         }
     }
 
@@ -76,9 +65,6 @@ public class PieceRenderer
 
             using var fill = new SolidBrush(Color.FromArgb(200, color));
             g.FillRectangle(fill, rect);
-
-            using var glint = new SolidBrush(Color.FromArgb(55, 255, 255, 255));
-            g.FillRectangle(glint, new Rectangle(rect.X, rect.Y, rect.Width, rect.Height / 3));
         }
     }
 }

@@ -4,36 +4,32 @@ public static class ColorTheme
 {
     // ── Light theme matching the original Blockudoku look ──────────────────
     public static readonly Color Background   = Color.FromArgb(255, 255, 255);  // pure white
-    public static readonly Color GridLine     = Color.FromArgb(210, 216, 232);  // soft gray-blue
-    public static readonly Color BoxBorder    = Color.FromArgb(155, 165, 200);  // medium gray-blue
+    public static readonly Color GridLine     = Color.FromArgb(200, 200, 200);  // light gray
+    public static readonly Color BoxBorder    = Color.FromArgb(130, 130, 130);  // medium gray
     public static readonly Color EmptyCell    = Color.FromArgb(232, 236, 248);  // very light lavender
     public static readonly Color GhostInvalid = Color.FromArgb(140, 220, 60, 60);
     public static readonly Color ScoreText    = Color.FromArgb(30, 35, 65);     // dark navy
     public static readonly Color LabelText    = Color.FromArgb(150, 155, 185);  // medium gray
 
-    // ── All pieces are blue (original Blockudoku style) ────────────────────
-    // Four subtle shades so pieces remain visually distinct on the board.
-    private static readonly Color PieceBlue1 = Color.FromArgb(74,  144, 226);  // cornflower — main
-    private static readonly Color PieceBlue2 = Color.FromArgb(55,  120, 210);  // slightly darker
-    private static readonly Color PieceBlue3 = Color.FromArgb(95,  165, 240);  // slightly lighter
-    private static readonly Color PieceBlue4 = Color.FromArgb(42,  100, 195);  // deeper blue
+    // ── All pieces are the same solid blue ─────────────────────────────────
+    private static readonly Color PieceBlue = Color.FromArgb(30, 90, 180);
 
     public static readonly Dictionary<string, Color> PieceColors = new()
     {
-        ["Yellow"]    = PieceBlue1,
-        ["Cyan"]      = PieceBlue3,
-        ["Green"]     = PieceBlue2,
-        ["Blue"]      = PieceBlue1,
-        ["Orange"]    = PieceBlue4,
-        ["Purple"]    = PieceBlue2,
-        ["Red"]       = PieceBlue4,
-        ["Pink"]      = PieceBlue3,
-        ["Teal"]      = PieceBlue2,
-        ["LightBlue"] = PieceBlue3,
-        ["Gold"]      = PieceBlue1,
-        ["Magenta"]   = PieceBlue4,
-        ["Salmon"]    = PieceBlue1,
-        ["Default"]   = PieceBlue1,
+        ["Yellow"]    = PieceBlue,
+        ["Cyan"]      = PieceBlue,
+        ["Green"]     = PieceBlue,
+        ["Blue"]      = PieceBlue,
+        ["Orange"]    = PieceBlue,
+        ["Purple"]    = PieceBlue,
+        ["Red"]       = PieceBlue,
+        ["Pink"]      = PieceBlue,
+        ["Teal"]      = PieceBlue,
+        ["LightBlue"] = PieceBlue,
+        ["Gold"]      = PieceBlue,
+        ["Magenta"]   = PieceBlue,
+        ["Salmon"]    = PieceBlue,
+        ["Default"]   = PieceBlue,
     };
 
     public static Color GetPieceColor(string? key)
