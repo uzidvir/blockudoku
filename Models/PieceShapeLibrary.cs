@@ -36,20 +36,6 @@ public static class PieceShapeLibrary
         // O-piece (2x2 square)
         shapes.Add(Make("O-2x2",      "Orange",    new[] { (0, 0), (0, 1), (1, 0), (1, 1) }));
 
-        // T-piece and rotations
-        shapes.Add(Make("T-Up",       "Purple",    new[] { (0, 1), (1, 0), (1, 1), (1, 2) }));
-        shapes.Add(Make("T-Down",     "Purple",    new[] { (0, 0), (0, 1), (0, 2), (1, 1) }));
-        shapes.Add(Make("T-Left",     "Purple",    new[] { (0, 0), (1, 0), (1, 1), (2, 0) }));
-        shapes.Add(Make("T-Right",    "Purple",    new[] { (0, 1), (1, 0), (1, 1), (2, 1) }));
-
-        // S-piece and rotations
-        shapes.Add(Make("S-H",        "Red",       new[] { (0, 1), (0, 2), (1, 0), (1, 1) }));
-        shapes.Add(Make("S-V",        "Red",       new[] { (0, 0), (1, 0), (1, 1), (2, 1) }));
-
-        // Z-piece and rotations
-        shapes.Add(Make("Z-H",        "Pink",      new[] { (0, 0), (0, 1), (1, 1), (1, 2) }));
-        shapes.Add(Make("Z-V",        "Pink",      new[] { (0, 1), (1, 0), (1, 1), (2, 0) }));
-
         // L-piece and rotations
         shapes.Add(Make("L-0",        "Orange",    new[] { (0, 0), (1, 0), (2, 0), (2, 1) }));
         shapes.Add(Make("L-90",       "Orange",    new[] { (0, 0), (0, 1), (0, 2), (1, 0) }));
@@ -79,10 +65,6 @@ public static class PieceShapeLibrary
         shapes.Add(Make("BigJ-180",   "LightBlue", new[] { (0, 0), (0, 1), (1, 0), (2, 0), (3, 0) }));
         shapes.Add(Make("BigJ-270",   "LightBlue", new[] { (0, 0), (0, 1), (0, 2), (0, 3), (1, 3) }));
 
-        // U-shapes
-        shapes.Add(Make("U-H",        "Magenta",   new[] { (0, 0), (0, 2), (1, 0), (1, 1), (1, 2) }));
-        shapes.Add(Make("U-V",        "Magenta",   new[] { (0, 0), (0, 1), (1, 0), (2, 0), (2, 1) }));
-
         // 2×3 and 3×2 rectangles
         shapes.Add(Make("Rect-2x3",   "Gold",      new[] { (0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2) }));
         shapes.Add(Make("Rect-3x2",   "Gold",      new[] { (0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1) }));
@@ -94,11 +76,6 @@ public static class PieceShapeLibrary
             (1, 0), (1, 1), (1, 2),
             (2, 0), (2, 1), (2, 2)
         }));
-
-        // Corner / Plus-arm pieces
-        shapes.Add(Make("Corner-TL",  "Salmon",    new[] { (0, 0), (1, 0), (1, 1), (1, 2), (2, 2) }));
-        shapes.Add(Make("Corner-TR",  "Salmon",    new[] { (0, 2), (1, 0), (1, 1), (1, 2), (2, 0) }));
-        shapes.Add(Make("Plus-3",     "Salmon",    new[] { (0, 1), (1, 0), (1, 1), (1, 2), (2, 1) }));
 
         return shapes;
     }
