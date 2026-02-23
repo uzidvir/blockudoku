@@ -51,9 +51,10 @@ public class BoardPanel : Panel
         var piece = _state.TrayPieces[_dragTrayIndex];
         if (piece is null) return;
 
-        // Anchor pixel = mouse minus pick-offset * cell size
-        int anchorPx = _mousePos.X - _state.DragPickCol * BoardRenderer.CellSize;
-        int anchorPy = _mousePos.Y - _state.DragPickRow * BoardRenderer.CellSize;
+        // Anchor pixel = mouse minus pick-offset * cell size + half cell (nearest-cell rounding)
+        int half     = BoardRenderer.CellSize / 2;
+        int anchorPx = _mousePos.X - _state.DragPickCol * BoardRenderer.CellSize + half;
+        int anchorPy = _mousePos.Y - _state.DragPickRow * BoardRenderer.CellSize + half;
 
         var (anchorRow, anchorCol) = BoardRenderer.PixelToCell(anchorPx, anchorPy);
         _ghostAnchorRow = anchorRow;
