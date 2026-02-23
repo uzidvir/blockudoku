@@ -53,17 +53,11 @@ public static class PieceShapeLibrary
         shapes.Add(Make("I-H5",       "Teal",      new[] { (0, 0), (0, 1), (0, 2), (0, 3), (0, 4) }));
         shapes.Add(Make("I-V5",       "Teal",      new[] { (0, 0), (1, 0), (2, 0), (3, 0), (4, 0) }));
 
-        // Big L (4+1)
-        shapes.Add(Make("BigL-0",     "LightBlue", new[] { (0, 0), (1, 0), (2, 0), (3, 0), (3, 1) }));
-        shapes.Add(Make("BigL-90",    "LightBlue", new[] { (0, 0), (0, 1), (0, 2), (0, 3), (1, 0) }));
-        shapes.Add(Make("BigL-180",   "LightBlue", new[] { (0, 0), (0, 1), (1, 1), (2, 1), (3, 1) }));
-        shapes.Add(Make("BigL-270",   "LightBlue", new[] { (0, 3), (1, 0), (1, 1), (1, 2), (1, 3) }));
-
-        // Big J (mirror BigL)
-        shapes.Add(Make("BigJ-0",     "LightBlue", new[] { (0, 1), (1, 1), (2, 1), (3, 0), (3, 1) }));
-        shapes.Add(Make("BigJ-90",    "LightBlue", new[] { (0, 0), (1, 0), (1, 1), (1, 2), (1, 3) }));
-        shapes.Add(Make("BigJ-180",   "LightBlue", new[] { (0, 0), (0, 1), (1, 0), (2, 0), (3, 0) }));
-        shapes.Add(Make("BigJ-270",   "LightBlue", new[] { (0, 0), (0, 1), (0, 2), (0, 3), (1, 3) }));
+        // Big L (3+3 corner, all 4 rotations — covers both L and J orientations)
+        shapes.Add(Make("BigL-0",     "LightBlue", new[] { (0, 0), (1, 0), (2, 0), (2, 1), (2, 2) })); // #.. / #.. / ###
+        shapes.Add(Make("BigL-90",    "LightBlue", new[] { (0, 0), (0, 1), (0, 2), (1, 0), (2, 0) })); // ### / #.. / #..
+        shapes.Add(Make("BigL-180",   "LightBlue", new[] { (0, 0), (0, 1), (0, 2), (1, 2), (2, 2) })); // ### / ..# / ..#
+        shapes.Add(Make("BigL-270",   "LightBlue", new[] { (0, 2), (1, 2), (2, 0), (2, 1), (2, 2) })); // ..# / ..# / ###
 
         // 2×3 rectangle
         shapes.Add(Make("Rect-2x3",   "Gold",      new[] { (0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2) }));
