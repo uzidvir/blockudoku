@@ -65,17 +65,8 @@ public static class PieceShapeLibrary
         shapes.Add(Make("BigJ-180",   "LightBlue", new[] { (0, 0), (0, 1), (1, 0), (2, 0), (3, 0) }));
         shapes.Add(Make("BigJ-270",   "LightBlue", new[] { (0, 0), (0, 1), (0, 2), (0, 3), (1, 3) }));
 
-        // 2×3 and 3×2 rectangles
+        // 2×3 rectangle
         shapes.Add(Make("Rect-2x3",   "Gold",      new[] { (0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2) }));
-        shapes.Add(Make("Rect-3x2",   "Gold",      new[] { (0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1) }));
-
-        // Full 3×3 square
-        shapes.Add(Make("Square-3x3", "Gold",      new[]
-        {
-            (0, 0), (0, 1), (0, 2),
-            (1, 0), (1, 1), (1, 2),
-            (2, 0), (2, 1), (2, 2)
-        }));
 
         return shapes;
     }
