@@ -1,0 +1,30 @@
+## .NET / C# gitignore
+
+# Build output
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.cache
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+nuget.config
+
+# Rider
+.idea/
+
+# User-specific settings
+*.rsuser
+*.DotSettings.user
+
+# Windows
+Thumbs.db
+Desktop.ini
