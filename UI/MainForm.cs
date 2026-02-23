@@ -34,7 +34,7 @@ public class MainForm : Form
     private void SetupLayout()
     {
         Text            = "Blockudoku";
-        ClientSize      = new Size(BoardSize + 40, BoardSize + 185);
+        ClientSize      = new Size(BoardSize + 40, BoardSize + 239);
         FormBorderStyle = FormBorderStyle.FixedSingle;
         MaximizeBox     = false;
         BackColor       = ColorTheme.Background;
@@ -47,7 +47,7 @@ public class MainForm : Form
         _boardPanel.Size     = new Size(BoardSize, BoardSize);
 
         _trayPanel.Location = new Point(20, 82 + BoardSize + 12);
-        _trayPanel.Size     = new Size(BoardSize, 86);
+        _trayPanel.Size     = new Size(BoardSize, 140);
 
         Controls.AddRange(new Control[] { _scorePanel, _boardPanel, _trayPanel });
     }

@@ -38,7 +38,7 @@ public class TrayPanel : Panel
             if (piece is null) continue;
 
             float alpha = (i == _state.DraggingIndex) ? 0.25f : 1.0f;
-            _renderer.DrawPiece(e.Graphics, piece, SlotBounds(i), 0.82f, alpha);
+            _renderer.DrawPiece(e.Graphics, piece, SlotBounds(i), 1.0f, alpha);
         }
     }
 

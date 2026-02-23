@@ -17,8 +17,9 @@ public class PieceRenderer
     {
         int maxCellW = (bounds.Width  - 10) / Math.Max(piece.ColSpan, 1);
         int maxCellH = (bounds.Height - 10) / Math.Max(piece.RowSpan, 1);
-        int cellPx   = (int)(Math.Min(maxCellW, maxCellH) * scale);
-        cellPx = Math.Clamp(cellPx, 4, 52);
+        // Cap at board cell size so tray pieces match the board visually
+        int cellPx   = Math.Min(Math.Min(maxCellW, maxCellH), BoardRenderer.CellSize);
+        cellPx = Math.Max(cellPx, 4);
 
         int totalW = piece.ColSpan * cellPx;
         int totalH = piece.RowSpan * cellPx;

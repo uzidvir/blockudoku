@@ -4,7 +4,7 @@ namespace BlockudokuGame.Rendering;
 
 public class BoardRenderer
 {
-    public const int CellSize  = 58;
+    public const int CellSize  = 40;
     public const int CellPad   = 2;
 
     private static readonly Pen GridPen  = new(ColorTheme.GridLine, 1f);
