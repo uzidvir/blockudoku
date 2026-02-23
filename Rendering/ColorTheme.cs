@@ -2,30 +2,38 @@ namespace BlockudokuGame.Rendering;
 
 public static class ColorTheme
 {
-    public static readonly Color Background   = Color.FromArgb(28, 28, 38);
-    public static readonly Color GridLine     = Color.FromArgb(55, 55, 70);
-    public static readonly Color BoxBorder    = Color.FromArgb(110, 110, 135);
-    public static readonly Color EmptyCell    = Color.FromArgb(42, 42, 55);
-    public static readonly Color GhostInvalid = Color.FromArgb(160, 220, 60, 60);
-    public static readonly Color ScoreText    = Color.FromArgb(220, 220, 240);
-    public static readonly Color LabelText    = Color.FromArgb(140, 140, 165);
+    // ── Light theme matching the original Blockudoku look ──────────────────
+    public static readonly Color Background   = Color.FromArgb(255, 255, 255);  // pure white
+    public static readonly Color GridLine     = Color.FromArgb(210, 216, 232);  // soft gray-blue
+    public static readonly Color BoxBorder    = Color.FromArgb(155, 165, 200);  // medium gray-blue
+    public static readonly Color EmptyCell    = Color.FromArgb(232, 236, 248);  // very light lavender
+    public static readonly Color GhostInvalid = Color.FromArgb(140, 220, 60, 60);
+    public static readonly Color ScoreText    = Color.FromArgb(30, 35, 65);     // dark navy
+    public static readonly Color LabelText    = Color.FromArgb(150, 155, 185);  // medium gray
+
+    // ── All pieces are blue (original Blockudoku style) ────────────────────
+    // Four subtle shades so pieces remain visually distinct on the board.
+    private static readonly Color PieceBlue1 = Color.FromArgb(74,  144, 226);  // cornflower — main
+    private static readonly Color PieceBlue2 = Color.FromArgb(55,  120, 210);  // slightly darker
+    private static readonly Color PieceBlue3 = Color.FromArgb(95,  165, 240);  // slightly lighter
+    private static readonly Color PieceBlue4 = Color.FromArgb(42,  100, 195);  // deeper blue
 
     public static readonly Dictionary<string, Color> PieceColors = new()
     {
-        ["Yellow"]    = Color.FromArgb(255, 215, 55),
-        ["Cyan"]      = Color.FromArgb(50, 210, 210),
-        ["Green"]     = Color.FromArgb(75, 195, 95),
-        ["Blue"]      = Color.FromArgb(55, 115, 250),
-        ["Orange"]    = Color.FromArgb(250, 145, 45),
-        ["Purple"]    = Color.FromArgb(155, 75, 215),
-        ["Red"]       = Color.FromArgb(225, 65, 65),
-        ["Pink"]      = Color.FromArgb(225, 125, 155),
-        ["Teal"]      = Color.FromArgb(35, 175, 155),
-        ["LightBlue"] = Color.FromArgb(95, 185, 235),
-        ["Gold"]      = Color.FromArgb(215, 185, 45),
-        ["Magenta"]   = Color.FromArgb(195, 75, 195),
-        ["Salmon"]    = Color.FromArgb(225, 135, 105),
-        ["Default"]   = Color.FromArgb(175, 175, 175),
+        ["Yellow"]    = PieceBlue1,
+        ["Cyan"]      = PieceBlue3,
+        ["Green"]     = PieceBlue2,
+        ["Blue"]      = PieceBlue1,
+        ["Orange"]    = PieceBlue4,
+        ["Purple"]    = PieceBlue2,
+        ["Red"]       = PieceBlue4,
+        ["Pink"]      = PieceBlue3,
+        ["Teal"]      = PieceBlue2,
+        ["LightBlue"] = PieceBlue3,
+        ["Gold"]      = PieceBlue1,
+        ["Magenta"]   = PieceBlue4,
+        ["Salmon"]    = PieceBlue1,
+        ["Default"]   = PieceBlue1,
     };
 
     public static Color GetPieceColor(string? key)
