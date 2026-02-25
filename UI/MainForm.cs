@@ -6,14 +6,16 @@ namespace BlockudokuGame.UI;
 
 public class MainForm : Form
 {
-    private readonly GameState  _state  = new();
-    private readonly GameEngine _engine;
+    private readonly GameState   _state  = new();
+    private readonly GameEngine  _engine;
+    private readonly HintEngine  _hintEngine = new();
 
     private readonly ScorePanel _scorePanel;
     private readonly BoardPanel _boardPanel;
     private readonly TrayPanel  _trayPanel;
+    private          Button     _hintButton = null!;
 
-    private const int BoardSize = BoardRenderer.CellSize * Board.Size;  // 522
+    private const int BoardSize = BoardRenderer.CellSize * Board.Size;
 
     public MainForm()
     {
@@ -34,7 +36,7 @@ public class MainForm : Form
     private void SetupLayout()
     {
         Text            = "Blockudoku";
-        ClientSize      = new Size(BoardSize + 40, BoardSize + 239);
+        ClientSize      = new Size(BoardSize + 40, BoardSize + 284);  // +45 for hint button row
         FormBorderStyle = FormBorderStyle.FixedSingle;
         MaximizeBox     = false;
         BackColor       = ColorTheme.Background;
@@ -49,7 +51,22 @@ public class MainForm : Form
         _trayPanel.Location = new Point(20, 82 + BoardSize + 12);
         _trayPanel.Size     = new Size(BoardSize, 140);
 
-        Controls.AddRange(new Control[] { _scorePanel, _boardPanel, _trayPanel });
+        // Hint button — centred below the tray
+        _hintButton = new Button
+        {
+            Text      = "Hint",
+            Size      = new Size(80, 30),
+            Location  = new Point(20 + (BoardSize - 80) / 2, 82 + BoardSize + 12 + 140 + 8),
+            FlatStyle = FlatStyle.Flat,
+            BackColor = ColorTheme.Background,
+            ForeColor = Color.FromArgb(30, 35, 65),
+            Font      = new Font("Segoe UI", 9f, FontStyle.Bold),
+            Cursor    = Cursors.Hand,
+        };
+        _hintButton.FlatAppearance.BorderColor = Color.FromArgb(180, 180, 180);
+        _hintButton.Click += OnHintClicked;
+
+        Controls.AddRange(new Control[] { _scorePanel, _boardPanel, _trayPanel, _hintButton });
     }
 
     private void WireEvents()
@@ -67,11 +84,12 @@ public class MainForm : Form
         _boardPanel.BeginDrag(trayIndex);
         _trayPanel.Capture = false;         // Release tray capture so board panel can receive events
         _boardPanel.Capture = true;         // Board panel takes over capture
-        _trayPanel.Invalidate();
+        ClearHint();                        // Hide hint while dragging
     }
 
     private void OnPiecePlaced(PlacementResult result)
     {
+        if (result.Success) ClearHint();    // Board changed — hint is stale
         _scorePanel.Invalidate();
         _trayPanel.Invalidate();
 
@@ -80,6 +98,31 @@ public class MainForm : Form
             SaveHighScore();
             ShowGameOverDialog();
         }
+    }
+
+    // ── Hint ─────────────────────────────────────────────────────────────────
+
+    private void OnHintClicked(object? sender, EventArgs e)
+    {
+        if (_state.Phase != GamePhase.Playing) return;
+
+        if (_state.HintActive) { ClearHint(); return; }    // toggle off
+
+        var moves = _hintEngine.FindBest(_state);
+        if (moves is null) return;
+
+        for (int i = 0; i < moves.Length; i++)
+            _state.HintMoves[i] = moves[i];
+
+        _boardPanel.Invalidate();
+        _trayPanel.Invalidate();
+    }
+
+    private void ClearHint()
+    {
+        _state.ClearHint();
+        _boardPanel.Invalidate();
+        _trayPanel.Invalidate();
     }
 
     private void OnDragEnded()

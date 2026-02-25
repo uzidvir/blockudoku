@@ -38,6 +38,12 @@ public static class ColorTheme
         return PieceColors["Default"];
     }
 
+    // ── Hint overlays (steps 1 → 2 → 3: amber → orange → deep-orange) ────────
+    public static readonly Color HintColor1 = Color.FromArgb(180, 255, 200,   0);
+    public static readonly Color HintColor2 = Color.FromArgb(150, 255, 140,   0);
+    public static readonly Color HintColor3 = Color.FromArgb(120, 255,  80,   0);
+    public static readonly Color HintBorder = Color.FromArgb(255, 200,   0);       // solid amber
+
     public static Color Darken(Color c, float factor = 0.55f) =>
         Color.FromArgb(c.A,
             (int)(c.R * factor),

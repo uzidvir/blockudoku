@@ -39,6 +39,20 @@ public class TrayPanel : Panel
 
             float alpha = (i == _state.DraggingIndex) ? 0.25f : 1.0f;
             _renderer.DrawPiece(e.Graphics, piece, SlotBounds(i), 1.0f, alpha);
+
+            // Draw hint badge (amber border + step number) if this slot is in the hint sequence
+            for (int step = 0; step < _state.HintMoves.Length; step++)
+            {
+                var move = _state.HintMoves[step];
+                if (move is null || move.TrayIndex != i) continue;
+
+                var sb = SlotBounds(i);
+                using var pen   = new Pen(ColorTheme.HintBorder, 3f);
+                using var font  = new Font("Segoe UI", 14f, FontStyle.Bold);
+                using var brush = new SolidBrush(ColorTheme.HintBorder);
+                e.Graphics.DrawRectangle(pen, sb.X + 2, sb.Y + 2, sb.Width - 4, sb.Height - 4);
+                e.Graphics.DrawString((step + 1).ToString(), font, brush, sb.X + 6, sb.Y + 6);
+            }
         }
     }
 

@@ -104,7 +104,7 @@ public class BoardRenderer
     public static Rectangle CellRect(int row, int col) =>
         new Rectangle(col * CellSize, row * CellSize, CellSize, CellSize);
 
-    private static Rectangle InnerRect(Rectangle cell) =>
+    internal static Rectangle InnerRect(Rectangle cell) =>
         new Rectangle(
             cell.X + CellPad,
             cell.Y + CellPad,

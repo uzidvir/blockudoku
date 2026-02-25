@@ -64,6 +64,9 @@ public class BoardPanel : Panel
                       && _engine.CanPlace(piece, anchorRow, anchorCol);
     }
 
+    private static readonly Color[] HintColors =
+        [ColorTheme.HintColor1, ColorTheme.HintColor2, ColorTheme.HintColor3];
+
     protected override void OnPaint(PaintEventArgs e)
     {
         base.OnPaint(e);
@@ -85,6 +88,34 @@ public class BoardPanel : Panel
         }
 
         _boardRend.Draw(g, _state.Board, ghostCells, _ghostValid, ghostPieceColor);
+
+        // Draw hint overlays (only when not dragging)
+        if (_dragTrayIndex < 0 && _state.HintActive)
+        {
+            using var numFont  = new Font("Segoe UI", 9f, FontStyle.Bold);
+            using var numBrush = new SolidBrush(Color.White);
+
+            for (int step = 0; step < _state.HintMoves.Length; step++)
+            {
+                var move = _state.HintMoves[step];
+                if (move is null) continue;
+                var piece = _state.TrayPieces[move.TrayIndex];
+                if (piece is null) continue;
+
+                using var fillBrush = new SolidBrush(HintColors[step]);
+                foreach (var (dr, dc) in piece.Cells)
+                {
+                    int r = move.Row + dr, c = move.Col + dc;
+                    if (r < 0 || r >= Board.Size || c < 0 || c >= Board.Size) continue;
+                    var inner = BoardRenderer.InnerRect(BoardRenderer.CellRect(r, c));
+                    g.FillRectangle(fillBrush, inner);
+                }
+
+                // Step number on the anchor cell
+                var anchor = BoardRenderer.InnerRect(BoardRenderer.CellRect(move.Row, move.Col));
+                g.DrawString((step + 1).ToString(), numFont, numBrush, anchor.X + 2, anchor.Y + 1);
+            }
+        }
 
         // Draw floating piece image following the cursor
         if (_dragTrayIndex >= 0)
